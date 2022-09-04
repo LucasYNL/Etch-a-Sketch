@@ -1,0 +1,19 @@
+.main{
+    display: flex;
+    margin: auto;
+    width: 40%;
+}
+
+.section{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.part{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    margin-left: 1px;
+    background-color: white;
+}
