@@ -1,14 +1,15 @@
-const sketch = document.querySelector('.sketch');
+function create(across, down){
+    const sketch = document.querySelector('.sketch');
 
-for(let i = 0; i < 16; i++){
-    const row = document.createElement('div');
-    row.classList.add('section');
-    sketch.append(row);
-    for(let x = 0; x < 16; x++){
-        const blocks = document.createElement('div');
-        blocks.classList.add('part');
-        row.append(blocks);
-    }
+    for(let i = 0; i < across; i++){
+        const row = document.createElement('div');
+        row.classList.add('section');
+        sketch.append(row);
+        for(let x = 0; x < down; x++){
+            const blocks = document.createElement('div');
+            blocks.classList.add('part');
+            row.append(blocks);
+        }
 };
 
 const part = document.querySelectorAll('.part');
@@ -18,6 +19,8 @@ part.forEach(function (i) {
         i.style.backgroundColor = 'red';
     });
 });
+
+}
 
 //////////////////////////////////////////////////////////
 
@@ -33,25 +36,8 @@ function setSize(){
     sketch.setAttribute('id', 'draw');
     body.append(sketch);    
 
-    for(let i = 0; i < across; i++){
-        const row = document.createElement('div');
-        row.classList.add('section');
-        sketch.append(row);
-        for(let x = 0; x < down; x++){
-            const blocks = document.createElement('div');
-            blocks.classList.add('part');
-            row.append(blocks);
-        }
-    };
-
-    const part = document.querySelectorAll('.part');
-
-    part.forEach(function (i) {
-        i.addEventListener('mouseover', () => {
-            i.style.backgroundColor = 'red';
-        });
-    });
+    create(across, down);
     
 }
 
-
+create(16, 16);
