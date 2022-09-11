@@ -10,23 +10,33 @@ function create(across, down){
             blocks.classList.add('part');
             row.append(blocks);
         }
-};
+    };
 
-const part = document.querySelectorAll('.part');
+    const part = document.querySelectorAll('.part');
 
-part.forEach(function (i) {
-    i.addEventListener('mouseover', () => {
-        i.style.backgroundColor = 'red';
+    part.forEach(function (i) {
+        i.addEventListener('mouseover', () => {
+            i.style.backgroundColor = 'red';
+        });
     });
-});
 
 }
 
 //////////////////////////////////////////////////////////
 
 function setSize(){
-    let down = prompt("Enter the number of columns");
-    let across = prompt("Enter the number of rows");
+    let down = prompt("Enter the number of columns from 10 - 60");
+    let across = prompt("Enter the number of rows from 10 - 60");
+
+    if(down > 60 || down < 10){
+        alert('The input for columns is not correct');
+        down = resize(down);
+    }
+    if(across > 60 || across < 10){
+        alert('The input for rows is not correct');
+        across = resize(across);
+    }
+
     const clear = document.getElementById("draw");
     const body = document.getElementById("main");
     const sketch = document.createElement('div');
@@ -38,6 +48,16 @@ function setSize(){
 
     create(across, down);
     
+}
+
+function resize(num){
+    num = prompt("Re-enter a number from 10 - 60");
+
+    if(num > 60 || num < 10){
+        num = resize(num);
+    }
+
+    return num;
 }
 
 create(16, 16);

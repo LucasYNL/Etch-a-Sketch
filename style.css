@@ -14,17 +14,19 @@ body{
 
 .sketch{
     display: flex;
+    width: 500px;
+    height: 500px;
 }
 
 .section{
     display: flex;
     flex-direction: column;
     gap: 1px;
+    flex-grow: 1;
 }
 
 .part{
-    width: 30px;
-    height: 30px;
+    flex-grow: 1;
     border: 1px solid black;
     margin-left: 1px;
     background-color: white;
