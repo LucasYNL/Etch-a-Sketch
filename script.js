@@ -1,11 +1,11 @@
-function create(across, down){
+function create(num){
     const sketch = document.querySelector('.sketch');
 
-    for(let i = 0; i < across; i++){
+    for(let i = 0; i < num; i++){
         const row = document.createElement('div');
         row.classList.add('section');
         sketch.append(row);
-        for(let x = 0; x < down; x++){
+        for(let x = 0; x < num; x++){
             const blocks = document.createElement('div');
             blocks.classList.add('part');
             row.append(blocks);
@@ -25,17 +25,7 @@ function create(across, down){
 //////////////////////////////////////////////////////////
 
 function setSize(){
-    let down = prompt("Enter the number of columns from 10 - 60");
-    let across = prompt("Enter the number of rows from 10 - 60");
-
-    if(down > 60 || down < 10){
-        alert('The input for columns is not correct');
-        down = resize(down);
-    }
-    if(across > 60 || across < 10){
-        alert('The input for rows is not correct');
-        across = resize(across);
-    }
+    let colRow = checkSize(prompt("Enter the number of squares per side from 10 - 60"));
 
     const clear = document.getElementById("draw");
     const body = document.getElementById("main");
@@ -46,15 +36,15 @@ function setSize(){
     sketch.setAttribute('id', 'draw');
     body.append(sketch);    
 
-    create(across, down);
+    create(colRow);
     
 }
 
-function resize(num){
-    num = prompt("Re-enter a number from 10 - 60");
-
-    if(num > 60 || num < 10){
-        num = resize(num);
+function checkSize(num){
+    if(num > 60 || num < 10 || isNaN(num) === true){
+        alert('The input for squares per side is not within range');
+        num = prompt("Re-enter a number from 10 - 60");
+        num = checkSize(num);
     }
 
     return num;
